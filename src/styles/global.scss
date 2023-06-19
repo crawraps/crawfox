@@ -1,0 +1,77 @@
+#titlebar {
+  display: none;
+}
+
+#main-window {
+  background: var(--crawraps-main-window) !important;
+  appearance: var(--crawraps-moz-appearance) !important;
+ 	-moz-appearance: var(--crawraps-moz-appearance) !important;
+}
+
+#customization-container {
+	background: var(--crawraps-main-window) !important;
+}
+
+#tabbrowser-tabpanels{
+	background: var(--crawraps-bg) !important;
+}
+
+
+#navigator-toolbox, #navigator-toolbox-background {
+	background: var(--crawraps-main-window) !important;
+	border: none !important;
+	appearance: var(--crawraps-moz-appearance) !important;
+}
+
+:root:-moz-lwtheme {
+	--focus-outline-color: rgb(var(--crawraps-primary)) !important;
+}
+
+/* Sidebar */
+#sidebar-box,
+#sidebar-box:-moz-lwtheme-darktext,
+#sidebar-box:-moz-lwtheme-brighttext {
+	--sidebar-background-color: var(--crawraps-bg) !important;
+	--sidebar-text-color: white !important;
+	background: var(--crawraps-bg) !important;
+}
+
+#sidebar,
+.sidebar-panel {
+	background: transparent !important;
+}
+
+.theme-body {
+   background: transparent !important;
+}
+
+#sidebar-box {
+	overflow: hidden;
+	background-color:  var(--crawraps-bg) !important;
+	min-width: 40px !important;
+/* 	max-width: 42px !important; */
+	max-width: 300px !important;
+	z-index: 2;
+	transition: max-width .3s ease-in-out;
+}
+
+#sidebar-box:hover, #sidebar-box #sidebar {
+	max-width: 300px !important;
+	z-index: 1;
+}
+
+#sidebar-box + #sidebar-splitter {
+  display: none !important;
+}
+
+/* removes sidebar header, you can change sidebar content
+with keyboard shortcuts, for example ctrl+B for bookmarks menu */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+	display: none;
+}
+
+/* removes handle used to change sidebar width, you can modify width
+when you open something else in sidebar, for example bookmarks menu */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+  display: none !important;
+}

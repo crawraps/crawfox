@@ -1,0 +1,175 @@
+@import 'utils';
+
+#crawfox #tabbrowser-tabs {
+  display: flex;
+  background-color: cla(bg);
+  box-sizing: border-box;
+  padding: 10px 4px;
+  width: 40px;
+  max-width: 40px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    width: 240px;
+    max-width: 240px;
+    padding: 10px;
+
+    #tabbrowser-arrowscrollbox {
+      .tabbrowser-tab {
+        width: 100%;
+        height: 48px;
+        max-height: 48px;
+
+        .tab-stack {
+          .tab-content {
+            padding: 2px 6px;
+            gap: 6px;
+
+            .tab-icon-stack {
+              height: 40%;
+            }
+
+            .tab-label-container {
+              opacity: .9;
+            }
+          }
+        }
+
+        &[selected] {
+          .tab-stack {
+            .tab-background {
+              background-color: cl(tab-bg, 0.8);
+
+              .tab-context-line {
+                transform: translateX(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #tabbrowser-arrowscrollbox {
+    display: flex;
+    flex-direction: column !important;
+
+    .tabbrowser-tab {
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      height: 32px;
+      max-height: 32px;
+      padding: 0;
+      min-height: 0px;
+      overflow: hidden;
+      border-radius: use(radius);
+      margin: 2px 0;
+      transition: all 0.2s ease-in-out;
+
+      &[selected] {
+        .tab-stack {
+          .tab-background {
+            background-color: cla(primary);
+            background-image: none;
+            outline: none;
+          }
+        }
+      }
+
+      &:not([pinned], [fadein]) {
+        max-height: 0px;
+        height: 0px;
+        margin: 0;
+        visibility: visible;
+      }
+
+      .tab-stack {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .tab-background {
+          z-index: 1;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          background-color: cl(tab-bg, 0.8);
+          transition: background-color .2s;
+          outline: none !important;
+
+          .tab-context-line {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transform: translateX(100%);
+            transition: .2s ease-in-out;
+            background: radial-gradient(circle at 100%, cla(primary) 1%, transparent);
+          }
+        }
+
+        .tab-content {
+          z-index: 2;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px;
+          transition: 0.2s ease-in-out;
+
+          .tab-icon-stack {
+            display: block;
+            height: 20px;
+            aspect-ratio: 1;
+            position: relative;
+            transition: height 0.2s ease-in-out;
+
+            > * {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              inset: 0;
+            }
+          }
+
+          .tab-label-container {
+            flex-grow: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transition: opacity .2s;
+
+            .tab-label {
+              display: block;
+              width: 100%;
+              height: 1.2em;
+              line-height: 1.2em;
+              overflow: hidden;
+            }
+
+            .tab-secondary-label {
+              display: none;
+            }
+          }
+
+          .tab-close-button {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#tabbrowser-arrowscrollbox::part(scrollbutton-up),
+#tabbrowser-arrowscrollbox::part(scrollbutton-down),
+#tabbrowser-arrowscrollbox::part(overflow-start-indicator),
+#tabs-newtab-button {
+  display: none;
+}

@@ -1,0 +1,11 @@
+@function use($name) {
+  @return var(--crawfox-#{unquote($name)});
+}
+
+@function cl($name, $alpha:1) {
+  @return rgba(use($name), $alpha);
+}
+
+@function cla($name) {
+  @return rgba(use($name), use(alpha));
+}

@@ -1,0 +1,20 @@
+{
+  "name": "crawfox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass-watch": "sass --no-source-map --watch src:dist | while read line; do cp ./dist/crawfox.css $FIREFOX_CHROME/resources/crawfox.au.css; done",
+    "tsc-watch": "tsc -w | while read line; do for file in ./dist/scripts/*; do mv -f \"$file\" \"$FIREFOX_CHROME/scripts/`basename ${file/.js/.uc.js}`\" 2>/dev/null; done; done",
+    "copy-manager": "cp -r manager/* dist",
+    "clear": "mkdir -p dist/ && rm -rf dist/*",
+    "dev": "npm run clear && npm run copy-manager && concurrently \"npm run sass-watch\" \"npm run tsc-watch\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "sass": "^1.63.4",
+    "typescript": "^5.1.3"
+  }
+}
