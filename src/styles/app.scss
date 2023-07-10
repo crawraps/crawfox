@@ -1,0 +1,10 @@
+#crawfox {
+  #appcontent {
+    background-color: cla(bg);
+
+    #tabbrowser-tabbox {
+      overflow: hidden;
+      border-top-left-radius: use(radius);
+    }
+  }
+}
